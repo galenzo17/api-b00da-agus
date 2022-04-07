@@ -1,0 +1,15 @@
+{
+    "name": "La api de Agustin with 🦾 para Buda",
+    "version": "0.1.0",
+    "description": "En esta Api se puede obtener la informacion de una cuenta de Buda, ademasde puede obtener un Proof of Work con el string 'b00da' por defector, puedes probar con otros string's",
+    "title": "La api de Agustin with 🦾 para Buda",
+    "url" : "https://api-b00da-agus.herokuapp.com",
+    "header": {
+      "title": "La api de Agustin with 🦾 para Buda",
+      "filename": "header.md"
+    },
+    "footer": {
+      "title": "My own footer title",
+      "filename": "footer.md"
+    }
+  }

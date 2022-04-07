@@ -6,6 +6,9 @@
 from hashlib import sha256, sha512, md5
 import json
 from random import randint
+"""
+@api {get} /user/:id Request User information
+"""
 
 class BudaProof():
     def __init__(self, text: str):

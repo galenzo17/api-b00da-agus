@@ -8,12 +8,27 @@ import json
 import os
 from BudaApi.pow import BudaProof
 from dotenv import load_dotenv
+from flask import Flask, current_app
 load_dotenv()
 apiKey = os.getenv('BUDA_API_KEY')
 secretKey = os.getenv('BUDA_SECRET_KEY')
 buda=BudaHMACAuth(apiKey, secretKey)
 
 app = Flask(__name__)
+@app.route('/')
+def get_user():
+    return current_app.send_static_file('index.html')
+    
+"""
+
+@apiName proofOfBuda
+@api {get} /proofOfBuda?text=SomeText Default text is "b00da"
+@apiGroup proofOfBuda
+@queryParam  {String} un texto para calcular el proof of work
+
+@apiSuccess {Object} b00daProof        Un objeto con el hash ,el text y nonce.
+
+"""
 @app.route('/proofOfBuda', methods=['GET'])
 def proofOfBuda():
     text = request.args.get('text')
@@ -53,7 +68,7 @@ def addOrder():
         print("An exception occurred")
     return response.json()
 
-@app.route("/")
+@app.route("/balances")
 def hello_world():
     try:
         
