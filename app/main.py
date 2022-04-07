@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import request
+from flask import jsonify
 from BudaApi.BudaHMACAuth import BudaHMACAuth
 import requests.auth
 import requests
@@ -20,9 +21,10 @@ def proofOfBuda():
         text='b00da'
     prueba= BudaProof(text)
     #pow.start()
+    # print(prueba.pown())
     print(prueba.pown())
-    print(prueba.nonce)
-    return "Proof of work done!"
+    response=prueba.pown()
+    return jsonify(response)
 
 @app.route("/simulate", methods=["POST"])
 def simulateFound():

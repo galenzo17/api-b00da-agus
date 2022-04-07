@@ -52,6 +52,8 @@ class BudaProof():
                     found = True
                     print("Hash found! " + str(hasht))
                     print("Text and Nonce: " + text + " + " + str(nonce) + " count: " + str(count) + " \n")
+                    response={'text':text,'nonce':nonce,'hash':hasht}
+                    return response
                 nonce += 1
                 count += 1
 

@@ -39,9 +39,9 @@ class BudaHMACAuth(requests.auth.AuthBase):
         r.headers['X-SBTC-NONCE'] = nonce
         r.headers['X-SBTC-SIGNATURE'] = signature
 
-        print(self.api_key)
-        print(nonce)
-        print(signature)
+        # print(self.api_key)
+        # print(nonce)
+        # print(signature)
         return r
 """KEY=f1ed39cb3ab40873f5cbf0e459902c35
 SECRET=cDT0SOz5/AKpHWxTu/UG6KW1See1sXmROHPVDdGD"""
