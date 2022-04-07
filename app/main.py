@@ -19,14 +19,33 @@ app = Flask(__name__)
 def get_user():
     return current_app.send_static_file('index.html')
     
+
+
+"""
+@api {get} /simulate Simula transaction a mi cuenta de Buda.com
+@apiName simulate
+@apiGroup simulate
+
+@apiSuccess {Object} response La respuesta de https://www.buda.com/api/v2/currencies/clp/deposits
+
+"""
+@app.route("/simulate", methods=["GET"])
+def simulateFound():
+    currency = 'clp'
+    url = f'https://www.buda.com/api/v2/currencies/{currency}/deposits'
+    response = requests.post(url, auth=buda, json={
+        'simulate': True,
+        'amount': 25000,
+    })
+    return(response.json())
 """
 
 @apiName proofOfBuda
-@api {get} /proofOfBuda?text=SomeText Default text is "b00da"
 @apiGroup proofOfBuda
-@queryParam  {String} un texto para calcular el proof of work
+@api {get} /proofOfBuda?text=SomeText Default text is "b00da"
 
-@apiSuccess {Object} b00daProof        Un objeto con el hash ,el text y nonce.
+@queryParam  {String} un texto para calcular el proof of work
+@apiSuccess {Object} text        Un objeto con el hash ,el text y nonce.
 
 """
 @app.route('/proofOfBuda', methods=['GET'])
@@ -40,16 +59,6 @@ def proofOfBuda():
     print(prueba.pown())
     response=prueba.pown()
     return jsonify(response)
-
-@app.route("/simulate", methods=["POST"])
-def simulateFound():
-    currency = 'clp'
-    url = f'https://www.buda.com/api/v2/currencies/{currency}/deposits'
-    response = requests.post(url, auth=buda, json={
-        'simulate': True,
-        'amount': 25000,
-    })
-    return(response.json())
 
 @app.route("/addOrder", methods=["POST"])
 def addOrder():
